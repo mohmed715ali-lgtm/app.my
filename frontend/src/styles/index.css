@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0f0f13;
+  --color-bg-secondary: #16161d;
+  --color-bg-tertiary: #1e1e28;
+  --color-bg-hover: #252533;
+  --color-bg-active: #2d2d3d;
+  --color-bg-card: #1a1a24;
+  --color-border-primary: #2a2a3a;
+  --color-border-secondary: #353548;
+  --color-text-primary: #e8e8f0;
+  --color-text-secondary: #9898b0;
+  --color-text-muted: #6868808;
+  --color-accent: #6c5ce7;
+  --color-accent-hover: #7d6ff0;
+  --color-accent-light: #6c5ce720;
+  --color-danger: #e74c3c;
+  --color-danger-hover: #c0392b;
+  --color-success: #2ecc71;
+  --color-warning: #f39c12;
+  --color-tag-1: #6c5ce7;
+  --color-tag-2: #00b894;
+  --color-tag-3: #e17055;
+  --color-tag-4: #0984e3;
+  --color-tag-5: #fdcb6e;
+  --color-tag-6: #e84393;
+  --font-family-sans: 'Segoe UI', 'Cairo', 'Noto Sans Arabic', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  font-family: var(--font-family-sans);
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-secondary);
+}
+
+textarea, input {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.15s ease-out;
+}
