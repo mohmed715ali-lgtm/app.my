@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070b1a" />
+  <meta name="description" content="زيوني — لعبة نينجا عربية في مدينة الصحراء" />
+  <title>زيوني</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" aria-label="زيوني"></canvas>
+
+    <!-- DOM overlays. Canvas handles the in-game HUD; menus live here so Arabic
+         typography renders crisply and CSS animations are cheap. -->
+    <section id="ui" aria-live="polite">
+      <!-- Start screen -->
+      <div class="screen" data-screen="menu">
+        <div class="menu-bg"></div>
+        <div class="menu-content">
+          <h1 class="title">زيوني</h1>
+          <p class="tagline">ظلال الصحراء. سرعة النصل. روح النينجا.</p>
+          <div class="menu-actions">
+            <button class="btn primary" data-action="play">ابدأ اللعب</button>
+            <button class="btn" data-action="shop">المتجر</button>
+            <button class="btn ghost" data-action="how">كيف تلعب</button>
+          </div>
+          <div class="menu-stats">
+            <div class="stat"><span class="label">أفضل نتيجة</span><span class="value" data-field="best">0</span></div>
+            <div class="stat"><span class="label">العملات</span><span class="value" data-field="coins">0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shop screen -->
+      <div class="screen" data-screen="shop" hidden>
+        <div class="panel">
+          <header class="panel-head">
+            <h2>المتجر</h2>
+            <div class="coin-chip"><span data-field="coins">0</span><i class="coin-ico"></i></div>
+            <button class="icon-btn" data-action="back" aria-label="رجوع">رجوع</button>
+          </header>
+
+          <div class="panel-section">
+            <h3>الأزياء</h3>
+            <div class="grid" data-grid="skins"></div>
+          </div>
+
+          <div class="panel-section">
+            <h3>القدرات</h3>
+            <div class="grid" data-grid="abilities"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to play -->
+      <div class="screen" data-screen="how" hidden>
+        <div class="panel">
+          <header class="panel-head">
+            <h2>كيف تلعب</h2>
+            <button class="icon-btn" data-action="back" aria-label="رجوع">رجوع</button>
+          </header>
+          <div class="howto">
+            <div class="howto-row"><kbd>Space</kbd><kbd>↑</kbd><span>قفز — اضغط مرتين لاستخدام القفزة المزدوجة بعد فتحها</span></div>
+            <div class="howto-row"><kbd>Shift</kbd><kbd>X</kbd><span>اندفاع سريع يخترق بعض العوائق</span></div>
+            <div class="howto-row"><kbd>P</kbd><kbd>Esc</kbd><span>إيقاف مؤقت</span></div>
+            <div class="howto-row"><kbd>لمس</kbd><span>اضغط النصف السفلي للقفز، الأعلى للاندفاع</span></div>
+            <p class="howto-hint">اجمع العملات، افتح الأزياء والقدرات، وتحدَّ أفضل نتيجة لك.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pause -->
+      <div class="screen compact" data-screen="pause" hidden>
+        <div class="panel small">
+          <h2>متوقف</h2>
+          <div class="menu-actions">
+            <button class="btn primary" data-action="resume">متابعة</button>
+            <button class="btn" data-action="restart">إعادة</button>
+            <button class="btn ghost" data-action="menu">القائمة</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Over -->
+      <div class="screen compact" data-screen="gameover" hidden>
+        <div class="panel small gameover">
+          <h2>انتهت الجولة</h2>
+          <div class="go-stats">
+            <div class="stat"><span class="label">النتيجة</span><span class="value" data-field="score">0</span></div>
+            <div class="stat"><span class="label">العملات</span><span class="value" data-field="runCoins">0</span></div>
+            <div class="stat"><span class="label">أفضل</span><span class="value" data-field="best">0</span></div>
+          </div>
+          <div class="menu-actions">
+            <button class="btn primary" data-action="restart">إعادة المحاولة</button>
+            <button class="btn" data-action="shop">المتجر</button>
+            <button class="btn ghost" data-action="menu">القائمة</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pause button during gameplay -->
+      <button class="pause-btn" data-action="pause" aria-label="إيقاف" hidden>❙❙</button>
+
+      <!-- Toast notifications -->
+      <div class="toast-stack" aria-live="polite"></div>
+    </section>
+
+    <div class="credit">حقوق الطالب زين العابدين راضي</div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
